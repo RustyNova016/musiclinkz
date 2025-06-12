@@ -1,0 +1,126 @@
+.link_card {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    flex-flow: row wrap;
+
+    height: fit-content;
+    
+
+    min-width: 300px;
+    width: 90%;
+    max-width: 800px;
+
+    max-height: 90vh;
+
+    padding: 30px;
+    background-color: #00000080;
+    border-radius: 10px;
+
+    color: white;
+    /* overflow: scroll; */
+}
+
+@media (max-width: 710px) {
+    .link_card {
+        max-width: 386px;
+        flex-flow: column;
+    }
+}
+
+.link_card:before {
+    content: "";
+    align-self: stretch;
+    border: 1px solid lightgrey;
+  }
+
+.card_item {
+    margin: 20px;
+    width: 250px;
+    max-height: 73vh;
+}
+
+
+
+.card_header {
+    height: min-content;
+    max-width: 275px;
+    order: -1;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between; 
+    align-items: space-between;
+}
+
+.card_title {
+    text-align: center;
+    font-size: 150%;
+
+    margin-top: 0rem;
+    margin-bottom: 0;
+}
+
+.disambiguation {
+    color: rgb(177, 177, 177);
+    size: 0em;
+    text-align: center;
+    margin-top: 00rem;
+    margin-bottom: 0;
+}
+
+.image_container {
+    flex-grow: 1;
+    margin: 15px;
+    padding-bottom: 85%;
+    position: relative;
+    max-height: 100%;
+}
+
+.image {
+    border-radius: 10px;
+}
+
+.link_category {
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #00000080;
+    align-items: center;
+    justify-content: center;
+
+    width: 250px;
+    overflow: scroll;
+}
+
+
+.link_button {
+    width: 100%;
+    border-radius: 5px;
+    border: 2px black solid;
+    background-color: rgb(243, 243, 243);
+    color: black;
+    size: 1em;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    text-decoration: none;
+
+
+    /* min-width: 10em; */
+    max-width: 12em;
+}
+
+.link_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+}
+
+.link_text {
+    text-align: center;
+    margin-left: 5px;
+}
