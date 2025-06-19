@@ -35,9 +35,11 @@
   }
 
 .card_item {
-    margin: 20px;
+    margin: 20px 0px;
     width: 250px;
     max-height: 73vh;
+
+    text-align: center;
 }
 
 
@@ -91,13 +93,17 @@
     justify-content: center;
 
     width: 250px;
-    overflow: scroll;
+    /* overflow: scroll; */
+}
+
+.link_button_group {
+    width: 100%;
 }
 
 
 .link_button {
     width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 2px black solid;
     background-color: rgb(243, 243, 243);
     color: black;
@@ -105,12 +111,30 @@
     padding: 5px;
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 7.5px;
     text-decoration: none;
+}
 
+.link_button_solo {
+    width: 100%;
+    border-radius: 5px;
+    border: 2px black solid;
+}
 
-    /* min-width: 10em; */
-    max-width: 12em;
+.link_button_left {
+    border: 2px black solid;
+    border-right: 2px;
+    border-radius: 5px 0px 0px 5px;
+
+    margin-right: 1px;
+}
+
+.link_button_right {
+    width: fit-content;
+
+    border: 2px black solid;
+    border-left: 0px;
+    border-radius: 0px 5px 5px 0px;
 }
 
 .link_icon {

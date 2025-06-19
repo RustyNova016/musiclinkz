@@ -1,5 +1,6 @@
 import { LinkCard, LinkCardProps } from "@/components/central_card";
 import { CardHeader } from "@/components/headers";
+import { LinkCategory } from "@/components/link_category";
 import { LinkSection } from "@/components/link_section";
 import {
     ModalChild,
@@ -8,6 +9,7 @@ import {
 } from "@/components/stateless/modal";
 import { mbApi, recording_cover_art, release_covert_art } from "@/mb_fetching";
 import { UrlData } from "@/models/url";
+import { IArtist } from "musicbrainz-api";
 import Head from "next/head";
 
 export const metadata = {
@@ -21,38 +23,36 @@ export default async function Page({
 }) {
     const { mbid } = await params;
 
-    let recording_data = await mbApi.lookup("recording", mbid, [
-        "artists",
-        "releases",
-        "url-rels",
-    ]);
+    let response = await fetch(
+        `https://musicbrainz.org/ws/2/artist/${mbid}?inc=url-rels&fmt=json`,
+        {
+            headers: {
+                "User-Agent": "test/0.0.1",
+            },
+        }
+    );
 
-    let image = await recording_cover_art(recording_data);
-    image = image
-        ? image
-        : "https://listenbrainz.org/static/img/cover-art-placeholder.jpg";
+    let artist_data: IArtist = await response.json();
+    
+    // // Set the metadata
+    // metadata.title = `${recording_data.title} - MusicLinkz`;
 
-    // Set the metadata
-    metadata.title = `${recording_data.title} - MusicLinkz`;
-
-    let links = UrlData.convert_recording_urls(recording_data);
+    let links = UrlData.convert_artist_urls(artist_data);
 
     return (
         <>
             <PageModal>
                 <ModalChild style={{ overflow: "visible" }}>
                     <CardHeader
-                        title={recording_data.title}
-                        disambiguation={recording_data.disambiguation}
-                        image={image}
-                        artist_credits={recording_data["artist-credit"]}
+                        title={artist_data.name}
+                        disambiguation={artist_data.disambiguation}
                     />
                 </ModalChild>
 
                 <ModalSection />
 
                 <ModalChild>
-                    <LinkSection links={links || []} mbid={recording_data.id} />
+                    <LinkSection links={links || []} mbid={artist_data.id} />
                 </ModalChild>
             </PageModal>
         </>

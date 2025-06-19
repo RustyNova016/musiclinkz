@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
             new URL("https://listenbrainz.org/**"),
         ],
     },
+
+    output: "standalone",
 };
 
 export default nextConfig;

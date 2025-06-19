@@ -62,7 +62,6 @@ export async function recording_cover_art(
     releases.sort((a, b) => Date.parse(a.date) - Date.parse(a.date));
 
     for (const release of recording.releases) {
-        console.log(release);
         let ca = await release_covert_art(release.id);
         if (typeof ca === "string") {
             return ca;

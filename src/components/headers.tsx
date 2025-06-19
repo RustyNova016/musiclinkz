@@ -1,35 +1,18 @@
-import Link from "next/link";
-import styles from "./link_card.module.css";
-import Image from "next/image";
 import { IArtistCredit } from "musicbrainz-api";
+import styles from "./link_card.module.css";
 import { artist_credits } from "@/mb_fetching";
-import { LinkCategory } from "./link_category";
+import Link from "next/link";
+import Image from "next/image";
 
-export class LinkCardProps {
-    mbid: string;
+export type HeaderProps = {
     title: string;
-    artist_credits?: IArtistCredit[];
     disambiguation: string;
+    artist_credits?: IArtistCredit[];
+
     image?: string;
+};
 
-    links: LinkPillProps[];
-}
-
-export function LinkCard(data: LinkCardProps) {
-    return (
-        <div className={`${styles.link_card}`}>
-            <CardHeader {...data} />
-
-            <LinkCategory
-                title="Listen on..."
-                data={data.links}
-                mbid={data.mbid}
-            />
-        </div>
-    );
-}
-
-function CardHeader(data: LinkCardProps) {
+export function CardHeader(data: HeaderProps) {
     return (
         <div className={`${styles.card_item} ${styles.card_header}`}>
             {data.image ? (
@@ -47,17 +30,36 @@ function CardHeader(data: LinkCardProps) {
 
             <h1 className={styles.card_title}>{data.title}</h1>
             {data.disambiguation !== "" ? (
-                <p className={styles.disambiguation}>{data.disambiguation}</p>
+                <p className={styles.disambiguation}>({data.disambiguation})</p>
             ) : (
                 <></>
             )}
             {data.artist_credits !== undefined ? (
                 <p className={styles.disambiguation}>
-                    by {artist_credits(data.artist_credits)}
+                    by <ArtistCredits credits={data.artist_credits} />
                 </p>
             ) : (
                 <></>
             )}
         </div>
+    );
+}
+
+function ArtistCredits({ credits }: { credits: IArtistCredit[] }) {
+    return (
+        <>
+            {credits.map((credit, index) => (
+                <ArtistCredit credit={credit} key={index} />
+            ))}
+        </>
+    );
+}
+
+function ArtistCredit({ credit }: { credit: IArtistCredit }) {
+    return (
+        <>
+            <Link href={`/artist/${credit.artist.id}`}>{credit.name}</Link>
+            {credit.joinphrase}
+        </>
     );
 }
