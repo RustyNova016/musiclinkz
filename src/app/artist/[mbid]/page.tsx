@@ -7,10 +7,15 @@ import {
     ModalSection,
     PageModal,
 } from "@/components/stateless/modal";
+import { NotFound } from "@/components/stateless/not-found";
+import { cache_duration } from "@/globals";
 import { mbApi, recording_cover_art, release_covert_art } from "@/mb_fetching";
 import { UrlData } from "@/models/url";
 import { IArtist } from "musicbrainz-api";
 import Head from "next/head";
+import { notFound } from "next/navigation";
+
+export const revalidate = cache_duration;
 
 export const metadata = {
     title: "",
@@ -29,13 +34,20 @@ export default async function Page({
             headers: {
                 "User-Agent": "test/0.0.1",
             },
+            next: {
+                revalidate: cache_duration,
+            },
         }
     );
 
     let artist_data: IArtist = await response.json();
-    
+
+    if (artist_data.id === undefined) {
+        notFound();
+    }
+
     // // Set the metadata
-    // metadata.title = `${recording_data.title} - MusicLinkz`;
+    metadata.title = `${artist_data.name} - Linkbrainz`;
 
     let links = UrlData.convert_artist_urls(artist_data);
 

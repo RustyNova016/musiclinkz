@@ -9,9 +9,11 @@ import { UrlData } from "@/models/url";
 export function LinkCategory({
     data,
     title,
+    hover,
 }: {
     data: UrlData[];
     title: string;
+    hover: string;
 }) {
     if (data.length === 0) {
         return <></>;
@@ -21,17 +23,13 @@ export function LinkCategory({
     const url_groups = Array.from(urls.values());
 
     return (
-        <div className={`${styles.card_item}`}>
-            <div className={`${styles.link_category}`}>
-                <h4>{title}</h4>
-                <>
-                    {url_groups.map((link_group, key) => {
-                        return (
-                            <LinkPill key={key} links={link_group}></LinkPill>
-                        );
-                    })}
-                </>
-            </div>
+        <div className={`${styles.link_category}`}>
+            <h4 title={hover}>{title}</h4>
+            <>
+                {url_groups.map((link_group, key) => {
+                    return <LinkPill key={key} links={link_group}></LinkPill>;
+                })}
+            </>
         </div>
     );
 }

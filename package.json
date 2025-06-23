@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.6",
+    "colorthief": "^2.6.0",
     "musicbrainz-api": "^0.25.0",
     "next": "15.3.3",
     "react": "^19.0.0",

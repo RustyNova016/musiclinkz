@@ -1,4 +1,3 @@
-import { music_platform_relation_id } from "@/globals";
 import { IRelation } from "musicbrainz-api";
 import { LinkCategory } from "./link_category";
 import { UrlData } from "@/models/url";
@@ -41,10 +40,18 @@ export function LinkSection({
 
     return (
         <div>
-            <LinkCategory title="Listen on..." data={music_platform_links} />
-            <LinkCategory title="Socials" data={socials_links} />
-            <LinkCategory title="Music Databases" data={database_links} />
-            <LinkCategory title="Other links" data={other_links} />
+            <LinkCategory
+                title="Listen on..."
+                hover=""
+                data={music_platform_links}
+            />
+            <LinkCategory title="Socials" hover="" data={socials_links} />
+            <LinkCategory
+                title="Music Databases"
+                hover="Various sites containing extra metadata"
+                data={database_links}
+            />
+            <LinkCategory title="Other links" hover="Various other interesting links" data={other_links} />
         </div>
     );
 }
@@ -57,15 +64,19 @@ function MissingLinks({
     mbid: string;
 }) {
     let entity_edit = `https://musicbrainz.org/${entity_type}/${mbid}/edit`;
+    let listenbrainz = `https://listenbrainz.org/${entity_type}/${mbid}`;
 
     return (
         <>
             <div className={`${styles.card_item}`}>
                 <p style={{ fontSize: "500%" }}>⛓️‍💥</p>
-                <span>
+                <p>
                     No links have been found... But you can{" "}
                     <Link href={entity_edit}>add some</Link>
-                </span>
+                </p>
+                <p>
+                    Or try with <Link href={listenbrainz}>Listenbrainz</Link>
+                </p>
             </div>
         </>
     );

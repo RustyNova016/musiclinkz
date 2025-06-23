@@ -3,7 +3,13 @@ import {
     music_platform_relation_id,
     url_type_for_relation_id,
 } from "@/globals";
-import { IArtist, IRecording, IRelation, IRelationList } from "musicbrainz-api";
+import {
+    IArtist,
+    IRecording,
+    IRelation,
+    IRelationList,
+    IRelease,
+} from "musicbrainz-api";
 
 export class UrlData {
     name: string;
@@ -61,6 +67,31 @@ export class UrlData {
             new UrlData(
                 "",
                 `https://musicbrainz.org/artist/${recording.id}`,
+                "music_databases"
+            ),
+            new UrlData(
+                "",
+                `https://listenbrainz.org/artist/${recording.id}`,
+                "music_databases"
+            ),
+            ...urls,
+        ];
+    }
+
+    static convert_release_urls(release: IRelease): UrlData[] {
+        let urls = this.convert_relation_url(
+            release.relations ? release.relations : []
+        );
+
+        return [
+            new UrlData(
+                "",
+                `https://musicbrainz.org/release/${release.id}`,
+                "music_databases"
+            ),
+            new UrlData(
+                "",
+                `https://listenbrainz.org/release/${release.id}`,
                 "music_databases"
             ),
             ...urls,
