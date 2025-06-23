@@ -1,4 +1,4 @@
-Test prototype for Sharebrainz
+Test prototype for Sharebrainz / Linkbrainz / Musiclinkz / Whatever
 
 https://tickets.metabrainz.org/browse/MBS-13444
 
