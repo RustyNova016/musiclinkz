@@ -1,69 +1,34 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import { LinkCard, LinkCardProps } from "@/components/central_card";
+import Link from "next/link";
+import styles from "./home.module.scss";
+import { LinkPill } from "@/components/stateless/link_pill";
 
 export default function Home() {
-  const data = {
-    title: "Caster",
-    disambiguation: "Deathstep",
-    links: [
-      {
-        link: "Test",
-        favicon: ""
-      }
-    ]
-  } satisfies LinkCardProps
+    return (
+        <div className={`${styles.page_container}`}>
+            <div className={`${styles.title_container}`}>
+                <h1 className={`${styles.title}`}>Musiclinkz</h1>
+            </div>
 
-
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <LinkCard {...data}></LinkCard>
-      </main>
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer> */}
-    </div>
-  );
+            <div className={`${styles.description}`}>
+                <p>A simple link aggregator to easily share your music</p>
+                <h2 className={`${styles.section}`}>Free and crowdsourced</h2>
+                <p>
+                    It uses open data from the{" "}
+                    <LinkPill href={"https://musicbrainz.org"}>
+                        MusicBrainz database
+                    </LinkPill>
+                    to create and find links, allowing anyone to add their own
+                    music and links. Whether you are a local street musician or
+                    Beyoncé, you can add your own music to the MusicBrainz
+                    database and have access to this service
+                </p>
+                <h2 className={`${styles.section}`}>Opensource</h2>
+                Musiclinkz is 100% opensource and contains 0% vibe code. You can
+                find the source code and contribute on the{" "}
+                <LinkPill href={"https://musicbrainz.org"}>
+                    github repository
+                </LinkPill>
+            </div>
+        </div>
+    );
 }

@@ -11,14 +11,13 @@
   justify-content: center;
   min-height: 100svh;
   overflow: hidden;
-  padding: 20px;
   gap: 64px;
   font-family: var(--font-geist-sans);
-  background: #0032b0;
-  background: linear-gradient(111deg, rgba(0, 50, 176, 1) 0%, rgba(232, 119, 14, 1) 100%);
+  background: #000000;
+  background: linear-gradient(111deg, rgb(223, 43, 73) 0%, rgb(232, 117, 11) 100%);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
@@ -27,7 +26,7 @@
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
   }
-}
+} */
 
 .main {
   display: flex;

@@ -7,8 +7,10 @@ export function PageModal({
     style,
 }: PropsWithChildren & { style?: CSSProperties }) {
     return (
-        <div style={style} className={`${styles.page_modal}`}>
-            {children}
+        <div className={`${styles.modal_container}`}>
+            <div style={style} className={`${styles.page_modal}`}>
+                {children}
+            </div>
         </div>
     );
 }

@@ -10,8 +10,7 @@ const nextConfig: NextConfig = {
         ],
     },
 
-    basePath: "/musiclinkz",
-    output: "export", // <=== enables static exports
+    output: "standalone",
 };
 
 export default nextConfig;
