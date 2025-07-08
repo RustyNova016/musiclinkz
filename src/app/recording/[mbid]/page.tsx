@@ -15,7 +15,7 @@ import {
 import { UrlData } from "@/models/url";
 import { IRecording } from "musicbrainz-api";
 import { notFound } from "next/navigation";
-import { Vibrant } from "node-vibrant/node";
+import { get_recording_data } from "./common";
 
 export const revalidate = cache_duration;
 
@@ -29,6 +29,9 @@ export default async function Page({
     params: Promise<{ mbid: string }>;
 }) {
     const { mbid } = await params;
+
+    let recording_data_new = await get_recording_data(mbid);
+
 
     let response = await fetch(
         `https://musicbrainz.org/ws/2/recording/${mbid}?inc=url-rels+releases+artist-credits&fmt=json`,
