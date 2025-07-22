@@ -1,6 +1,6 @@
 import { Background } from "@/components/background";
 import { ImageResponse } from "next/og";
-import { get_recording_data } from "./common";
+import { get_recording_data, get_release_data } from "./common";
 import { PageModal } from "@/components/stateless/modal";
 import { Geist } from "next/font/google";
 import { join } from "path";
@@ -21,9 +21,9 @@ export default async function OGImage({
     params: { mbid: string };
 }) {
     const { mbid } = await params;
-    let recording_data = await get_recording_data(mbid);
+    let release_data = await get_release_data(mbid);
 
-    let style = `linear-gradient(111deg, ${recording_data.color_a} 0%, ${recording_data.color_b} 100%)`;
+    let style = `linear-gradient(111deg, ${release_data.color_a} 0%, ${release_data.color_b} 100%)`;
 
     const font = await readFile(
         join(process.cwd(), "public/Geist-Regular.ttf")
@@ -71,7 +71,7 @@ export default async function OGImage({
                                 width: "200px",
                                 height: "200px",
                             }}
-                            src={recording_data.image}
+                            src={release_data.image}
                         />
                     </div>
                     <div
@@ -100,7 +100,7 @@ export default async function OGImage({
                                 textAlign: "center",
                             }}
                         >
-                            {recording_data.title}
+                            {release_data.title}
                         </div>
 
                         <div
@@ -112,7 +112,7 @@ export default async function OGImage({
                                 textAlign: "center",
                             }}
                         >
-                            by {recording_data.artist_credits}
+                            by {release_data.artist_credits}
                         </div>
                     </div>
                 </div>

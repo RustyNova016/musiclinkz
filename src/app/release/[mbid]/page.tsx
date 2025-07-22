@@ -1,4 +1,3 @@
-import { LinkCard, LinkCardProps } from "@/components/central_card";
 import { CardHeader } from "@/components/headers";
 import {
     LayoutContext,
@@ -12,7 +11,7 @@ import {
     PageModal,
 } from "@/components/stateless/modal";
 import { cache_duration } from "@/globals";
-import { mbApi, recording_cover_art, release_covert_art } from "@/mb_fetching";
+import { mbApi,  release_covert_art } from "@/mb_fetching";
 import { UrlData } from "@/models/url";
 import { IRecording, IRelease } from "musicbrainz-api";
 import Head from "next/head";

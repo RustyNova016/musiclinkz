@@ -1,10 +1,11 @@
+import { cache_duration } from "@/globals";
 import { get_image_palette } from "@/image";
-import { recording_cover_art } from "@/models/recording";
+import { release_covert_art } from "@/mb_fetching";
 import { UrlData } from "@/models/url";
-import { IRecording } from "musicbrainz-api";
+import { IRelease } from "musicbrainz-api";
 import { notFound } from "next/navigation";
 
-export type RecordingData = {
+export type ReleaseData = {
     title: string;
     disambiguation: string;
     image: string;
@@ -15,26 +16,29 @@ export type RecordingData = {
 
     urls: UrlData[];
 
-    raw: IRecording;
+    raw: IRelease;
 };
 
-export async function get_recording_data(mbid: string): Promise<RecordingData> {
+export async function get_release_data(mbid: string): Promise<ReleaseData> {
     let response = await fetch(
-        `https://musicbrainz.org/ws/2/recording/${mbid}?inc=url-rels+releases+artist-credits&fmt=json`,
+        `https://musicbrainz.org/ws/2/release/${mbid}?inc=url-rels+artist-credits&fmt=json`,
         {
             headers: {
                 "User-Agent": "test/0.0.1",
             },
+            next: {
+                revalidate: cache_duration,
+            },
         }
     );
 
-    let recording_data: IRecording = await response.json();
+    let release_data: IRelease = await response.json();
 
-    if (recording_data.id === undefined) {
+    if (release_data.id === undefined) {
         notFound();
     }
 
-    let image = await recording_cover_art(recording_data);
+    let image = await release_covert_art(release_data.id);
     let color_a = "";
     let color_b = "";
 
@@ -49,20 +53,20 @@ export async function get_recording_data(mbid: string): Promise<RecordingData> {
     }
 
     let credits = "";
-    for (const credit of recording_data["artist-credit"]) {
+    for (const credit of release_data["artist-credit"]) {
         credits += credit.name + credit.joinphrase;
     }
 
     return {
-        title: recording_data.title,
-        disambiguation: recording_data.disambiguation,
+        title: release_data.title,
+        disambiguation: release_data.disambiguation,
         artist_credits: credits,
         image: image,
         color_a: color_a,
         color_b: color_b,
 
-        urls: UrlData.convert_recording_urls(recording_data),
+        urls: UrlData.convert_release_urls(release_data),
 
-        raw: recording_data,
+        raw: release_data,
     };
 }
