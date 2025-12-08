@@ -1,5 +1,5 @@
 import { LinkCard, LinkCardProps } from "@/components/central_card";
-import { CardHeader } from "@/components/headers";
+import { CardHeader } from "@/components/card_header/card_header";
 import { LinkCategory } from "@/components/link_list/category/link_category";
 import { LinkSection } from "@/components/link_section";
 import {
@@ -58,6 +58,7 @@ export default async function Page({
                     <CardHeader
                         title={artist_data.name}
                         disambiguation={artist_data.disambiguation}
+                        releases={[]}
                     />
                 </ModalChild>
 

@@ -1,0 +1,10 @@
+.card_header {
+    height: min-content;
+    width: 100%;
+    order: -1;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}

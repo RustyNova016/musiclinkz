@@ -1,4 +1,4 @@
-import { CardHeader } from "@/components/headers";
+import { CardHeader } from "@/components/card_header/card_header";
 import {
     LayoutContext,
     MainColorSetter,
@@ -11,7 +11,7 @@ import {
     PageModal,
 } from "@/components/stateless/modal";
 import { cache_duration } from "@/globals";
-import { mbApi,  release_covert_art } from "@/mb_fetching";
+import { mbApi, release_covert_art } from "@/mb_fetching";
 import { UrlData } from "@/models/url";
 import { IRecording, IRelease } from "musicbrainz-api";
 import Head from "next/head";
@@ -26,7 +26,7 @@ export const metadata = {
 export default async function Page({
     params,
 }: {
-    params: Promise<{ mbid: string }>;
+    params: Promise<{ mbid: string; }>;
 }) {
     const { mbid } = await params;
 
@@ -58,7 +58,7 @@ export default async function Page({
 
     if (image === null) {
         image = "https://listenbrainz.org/static/img/cover-art-placeholder.jpg";
-    } 
+    }
 
     // Set the metadata
     metadata.title = `${release_data.title} - Linkbrainz`;
@@ -74,6 +74,7 @@ export default async function Page({
                         disambiguation={release_data.disambiguation}
                         image={image}
                         artist_credits={release_data["artist-credit"]}
+                        releases={[]}
                     />
                 </ModalChild>
 

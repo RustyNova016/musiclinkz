@@ -1,5 +1,5 @@
 import { Background } from "@/components/background";
-import { CardHeader } from "@/components/headers";
+import { CardHeader } from "@/components/card_header/card_header";
 import { LinkSection } from "@/components/link_section";
 import {
     ModalChild,
@@ -26,7 +26,7 @@ export const metadata = {
 export default async function Page({
     params,
 }: {
-    params: Promise<{ mbid: string }>;
+    params: Promise<{ mbid: string; }>;
 }) {
     const { mbid } = await params;
 
