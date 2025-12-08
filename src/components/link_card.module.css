@@ -93,21 +93,6 @@
     object-fit: contain;
 }
 
-.link_category {
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    background-color: #00000080;
-    align-items: center;
-    justify-content: center;
-
-    margin: 20px 0px;
-
-    width: 250px;
-    /* overflow: scroll; */
-}
-
 
 
 

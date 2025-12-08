@@ -1,5 +1,5 @@
 import { IRelation } from "musicbrainz-api";
-import { LinkCategory } from "./link_category";
+import { LinkCategory } from "./link_list/category/link_category";
 import { UrlData } from "@/models/url";
 import { link } from "fs";
 import styles from "./link_card.module.css";
@@ -75,7 +75,7 @@ function MissingLinks({
                     <Link href={entity_edit}>add some</Link>
                 </p>
                 <p>
-                    Or try with <Link href={listenbrainz}>Listenbrainz</Link>
+                    Or try listening on <Link href={listenbrainz}>Listenbrainz</Link>
                 </p>
             </div>
         </>

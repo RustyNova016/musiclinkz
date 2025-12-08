@@ -1,6 +1,6 @@
 import { LinkCard, LinkCardProps } from "@/components/central_card";
 import { CardHeader } from "@/components/headers";
-import { LinkCategory } from "@/components/link_category";
+import { LinkCategory } from "@/components/link_list/category/link_category";
 import { LinkSection } from "@/components/link_section";
 import {
     ModalChild,
@@ -24,7 +24,7 @@ export const metadata = {
 export default async function Page({
     params,
 }: {
-    params: Promise<{ mbid: string }>;
+    params: Promise<{ mbid: string; }>;
 }) {
     const { mbid } = await params;
 
