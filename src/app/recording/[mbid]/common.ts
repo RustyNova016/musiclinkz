@@ -1,6 +1,7 @@
 import { get_image_palette } from "@/image";
 import { recording_cover_art } from "@/models/recording";
 import { UrlData } from "@/models/url";
+import { fetch_mb } from "@/utils/fetching";
 import { IRecording } from "musicbrainz-api";
 import { notFound } from "next/navigation";
 
@@ -19,16 +20,9 @@ export type RecordingData = {
 };
 
 export async function get_recording_data(mbid: string): Promise<RecordingData> {
-    let response = await fetch(
-        `https://musicbrainz.org/ws/2/recording/${mbid}?inc=url-rels+releases+artist-credits&fmt=json`,
-        {
-            headers: {
-                "User-Agent": "test/0.0.1",
-            },
-        }
+    let recording_data: IRecording = await fetch_mb(
+        `https://musicbrainz.org/ws/2/recording/${mbid}?inc=url-rels+releases+artist-credits&fmt=json`
     );
-
-    let recording_data: IRecording = await response.json();
 
     if (recording_data.id === undefined) {
         notFound();
@@ -49,8 +43,10 @@ export async function get_recording_data(mbid: string): Promise<RecordingData> {
     }
 
     let credits = "";
-    for (const credit of recording_data["artist-credit"]) {
-        credits += credit.name + credit.joinphrase;
+    if (recording_data["artist-credit"] !== undefined) {
+        for (const credit of recording_data["artist-credit"]) {
+            credits += credit.name + credit.joinphrase;
+        }
     }
 
     return {

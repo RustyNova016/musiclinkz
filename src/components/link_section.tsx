@@ -13,7 +13,7 @@ export function LinkSection({
     mbid: string;
 }) {
     // If there's only MB links, display the "No link" page
-    if (!links.some((link) => link.get_hostname() != "musicbrainz.org")) {
+    if (isMissingLinks(links)) {
         return <MissingLinks entity_type="recording" mbid={mbid} />;
     }
 
@@ -54,6 +54,16 @@ export function LinkSection({
             <LinkCategory title="Other links" hover="Various other interesting links" data={other_links} />
         </div>
     );
+}
+
+function isMissingLinks(links: UrlData[]) {
+    for (const link of links) {
+        if (link.get_hostname() != "musicbrainz.org" && link.get_hostname() != "listenbrainz.org") {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 function MissingLinks({

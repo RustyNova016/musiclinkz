@@ -1,6 +1,7 @@
 import { release_covert_art } from "@/mb_fetching";
 import { IRecording, IRelease } from "musicbrainz-api";
 
+
 export function recording_main_release(recording: IRecording): IRelease | null {
     if (recording.releases === undefined) {
         return null;
@@ -15,9 +16,8 @@ export function recording_main_release(recording: IRecording): IRelease | null {
         }
     }
 
-    return null
+    return null;
 }
-
 
 export async function recording_cover_art(
     recording: IRecording
