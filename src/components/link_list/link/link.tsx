@@ -17,7 +17,7 @@ export function LinkItem({ links }: LinkPillProps) {
 
     return (
         <>
-            <div className={`btn-group ${styles.link_button_group}`}>
+            <div className={`btn-group ${styles.link_button_group} ${styles.shadow}`}>
                 <MainLink link={main_link} has_alts={alt_links} />
                 {alt_links ? (
                     <>

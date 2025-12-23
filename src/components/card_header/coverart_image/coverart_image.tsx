@@ -2,28 +2,30 @@ import Image from "next/image";
 import styles from "./coverart_image.module.scss";
 
 export type CoverartImageProps = {
-    src: string;
+  src: string;
 };
 
 export function CoverartImage(props: CoverartImageProps) {
-    return <>
-        <Image
-            src={props.src}
-            className={styles.coverart}
-            alt="Cover Art of the entity"
-            height={250}
-            width={250}
-            placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 700))}`}
-        />
-    </>;
+  return <>
+    <div className={`${styles.coverart} ${styles.shadow}`}>
+      <Image
+        src={props.src}
+
+        alt="Cover Art of the entity"
+        height={250}
+        width={250}
+        placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 700))}`}
+      />
+    </div>
+  </>;
 }
 
 // Effect taken from: https://github.com/vercel/next.js/blob/v16.1.0-canary.15/examples/image-component/app/shimmer/page.tsx
 
 const toBase64 = (str: string) =>
-    typeof window === "undefined"
-        ? Buffer.from(str).toString("base64")
-        : window.btoa(str);
+  typeof window === "undefined"
+    ? Buffer.from(str).toString("base64")
+    : window.btoa(str);
 
 const shimmer = (w: number, h: number) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
