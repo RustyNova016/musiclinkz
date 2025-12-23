@@ -17,6 +17,8 @@ import { IRecording } from "musicbrainz-api";
 import { notFound } from "next/navigation";
 import { get_recording_data } from "./common";
 import { fetch_mb } from "@/utils/fetching";
+import { LinkPage } from "@/components/link_page/link_page";
+import { get_release_data } from "@/app/release/[mbid]/common";
 
 export const revalidate = cache_duration;
 
@@ -38,28 +40,7 @@ export default async function Page({
 
     return (
         <>
-            <Background color_a={recording_data.color_a} color_b={recording_data.color_b}>
-                <PageModal>
-                    <ModalChild style={{ overflow: "visible" }}>
-                        <CardHeader
-                            title={recording_data.title}
-                            disambiguation={recording_data.disambiguation}
-                            image={recording_data.image}
-                            artist_credits={recording_data.raw["artist-credit"]}
-                            releases={recording_data.raw.releases || []}
-                        />
-                    </ModalChild>
-
-                    <ModalSection />
-
-                    <ModalChild>
-                        <LinkSection
-                            links={recording_data.urls || []}
-                            mbid={recording_data.raw.id}
-                        />
-                    </ModalChild>
-                </PageModal>
-            </Background>
+            <LinkPage {...recording_data} />
         </>
     );
 }

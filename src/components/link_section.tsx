@@ -4,17 +4,18 @@ import { UrlData } from "@/models/url";
 import { link } from "fs";
 import styles from "./link_card.module.css";
 import Link from "next/link";
+import { MbEntity } from "@/globals";
 
-export function LinkSection({
-    links,
-    mbid,
-}: {
+export type LinkSectionProps = {
     links: UrlData[];
     mbid: string;
-}) {
+    entity_type: MbEntity;
+};
+
+export function LinkSection(props: LinkSectionProps) {
     // If there's only MB links, display the "No link" page
-    if (isMissingLinks(links)) {
-        return <MissingLinks entity_type="recording" mbid={mbid} />;
+    if (isMissingLinks(props.links)) {
+        return <MissingLinks entity_type="recording" mbid={props.mbid} />;
     }
 
     let music_platform_links = [];
@@ -22,7 +23,7 @@ export function LinkSection({
     let database_links = [];
     let other_links = [];
 
-    for (const link of links) {
+    for (const link of props.links) {
         switch (link.url_type) {
             case "listen_on":
                 music_platform_links.push(link);
@@ -70,7 +71,7 @@ function MissingLinks({
     entity_type,
     mbid,
 }: {
-    entity_type: string;
+        entity_type: MbEntity;
     mbid: string;
 }) {
     let entity_edit = `https://musicbrainz.org/${entity_type}/${mbid}/edit`;

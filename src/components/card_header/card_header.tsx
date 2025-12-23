@@ -4,22 +4,23 @@ import Image from "next/image";
 import { LinkPill } from "../stateless/link_pill";
 import { FoundOnRelease } from "./found_on_release/found_on_release";
 import { CoverartImage } from "./coverart_image/coverart_image";
+import { AccentColors } from "@/models/page_style";
 
 export type HeaderProps = {
     title: string;
     disambiguation: string;
-    artist_credits?: IArtistCredit[];
+    artist_credits: IArtistCredit[];
 
     releases: IRelease[];
-    image?: string;
-};
+    image: string | null;
+} & AccentColors;
 
 export function CardHeader(data: HeaderProps) {
     return (
         <div className={`${styles.card_header}`}>
             <FoundOnRelease releases={data.releases} />
 
-            {data.image ? (
+            {data.image !== null ? (
                 <CoverartImage src={data.image} />
             ) : (
                 <></>
@@ -31,9 +32,9 @@ export function CardHeader(data: HeaderProps) {
             ) : (
                 <></>
             )}
-            {data.artist_credits !== undefined ? (
+            {data.artist_credits.length !== 0 ? (
                 <p className={styles.disambiguation}>
-                    by <ArtistCredits credits={data.artist_credits} />
+                    by <ArtistCredits credits={data.artist_credits} color_a={data.color_a} color_b={data.color_b} />
                 </p>
             ) : (
                 <></>
@@ -42,25 +43,31 @@ export function CardHeader(data: HeaderProps) {
     );
 }
 
+export type ArtistCreditsProps = {
+    credits: IArtistCredit[];
+} & AccentColors;
 
-
-function ArtistCredits({ credits }: { credits: IArtistCredit[]; }) {
+function ArtistCredits(props: ArtistCreditsProps) {
     return (
         <>
-            {credits.map((credit, index) => (
-                <ArtistCredit credit={credit} key={index} />
+            {props.credits.map((credit, index) => (
+                <ArtistCredit credit={credit} color_a={props.color_a} color_b={props.color_b} key={index} />
             ))}
         </>
     );
 }
 
-function ArtistCredit({ credit }: { credit: IArtistCredit; }) {
+export type ArtistCreditProps = {
+    credit: IArtistCredit;
+} & AccentColors;
+
+function ArtistCredit(props: ArtistCreditProps) {
     return (
         <>
-            <LinkPill href={`/artist/${credit.artist.id}`}>
-                {credit.name}
+            <LinkPill href={`/artist/${props.credit.artist.id}`} color_a={props.color_a} color_b={props.color_b}>
+                {props.credit.name}
             </LinkPill>
-            {credit.joinphrase}
+            {props.credit.joinphrase}
         </>
     );
 }
