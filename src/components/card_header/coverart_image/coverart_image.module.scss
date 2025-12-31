@@ -16,6 +16,22 @@
 
     transform-style: preserve-3d;
     z-index: 0;
+
+}
+
+.image {
+    height: 250px;
+    width: 250px;
+
+    @media only screen and (max-height: 610px) {
+        height: 200px;
+        width: 200px;
+    }
+
+    @media only screen and (max-height: 500px) {
+        height: 150px;
+        width: 150px;
+    }
 }
 
 .shadow {

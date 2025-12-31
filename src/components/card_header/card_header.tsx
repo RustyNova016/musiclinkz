@@ -26,7 +26,7 @@ export function CardHeader(data: HeaderProps) {
                 <></>
             )}
 
-            <h1 className={styles.card_title}>{data.title}</h1>
+            <h1 className={styles.title}>{data.title}</h1>
             {data.disambiguation !== "" ? (
                 <p className={styles.disambiguation}>({data.disambiguation})</p>
             ) : (
