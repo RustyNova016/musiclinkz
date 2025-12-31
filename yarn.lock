@@ -1830,10 +1830,10 @@ extend@~3.0.2:
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
 
-extract-colors@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/extract-colors/-/extract-colors-4.2.0.tgz#4efcefc7bd7605802b3f536e7f13c0c09cc98e37"
-  integrity sha512-+0X1EMDSea/upbny8RMEoBZdB0in6yiWFVDNZy2d/ehXINRCly+PXC8gp7enSJomeB9dhD7Sud4jzROStuHOJA==
+extract-colors@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/extract-colors/-/extract-colors-4.2.1.tgz#7e0deaae3f02d482a89a4305ad306069418eedda"
+  integrity sha512-QAWcuwxnL9pisK7YfuG8qab6IF7UD6bbKTjiM+QTJ9Xvfi7fBymQd/xTFaPhkzkB5kyq+wla3AHanM7LInFLaQ==
 
 extsprintf@1.3.0:
   version "1.3.0"
