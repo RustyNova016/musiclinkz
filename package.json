@@ -12,7 +12,7 @@
     "@types/get-pixels": "^3.3.4",
     "@types/tinycolor2": "^1.4.6",
     "bootstrap": "^5.3.6",
-    "extract-colors": "^4.2.0",
+    "extract-colors": "^4.2.1",
     "get-pixels": "^3.3.3",
     "musicbrainz-api": "^0.25.0",
     "ndarray-pixels": "^5.0.1",
