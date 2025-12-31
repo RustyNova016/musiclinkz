@@ -14,7 +14,7 @@
     "bootstrap": "^5.3.6",
     "extract-colors": "^4.2.0",
     "get-pixels": "^3.3.3",
-    "musicbrainz-api": "^0.25.0",
+    "musicbrainz-api": "^0.27.1",
     "ndarray-pixels": "^5.0.1",
     "next": "^15.3.4",
     "node-vibrant": "^4.0.3",
