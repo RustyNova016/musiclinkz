@@ -15,6 +15,7 @@ export function CoverartImage(props: CoverartImageProps) {
         height={250}
         width={250}
         placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 700))}`}
+        className={`${styles.image}`}
       />
     </div>
   </>;

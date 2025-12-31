@@ -5,6 +5,7 @@ import { LinkSection } from "../link_section";
 import { PageModal, ModalChild, ModalSection } from "../stateless/modal";
 import { UrlData } from "@/models/url";
 import { MbEntity } from "@/globals";
+import { FloatingFooter } from "../floating_footer/floating_footer";
 
 export type LinkPageProps = {
     entity_type: MbEntity;
@@ -50,6 +51,7 @@ export function LinkPage(props: LinkPageProps) {
                     </ModalChild>
                 </PageModal>
             </Background>
+            <FloatingFooter entity_type={props.entity_type} mbid={props.mbid} />
         </>
     );
 }
