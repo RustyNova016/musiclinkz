@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
             new URL("http://coverartarchive.org/**"),
             new URL("http://www.google.com/s2/**"),
             new URL("https://listenbrainz.org/**"),
+            new URL("https://web.archive.org/**"),
         ],
     },
 

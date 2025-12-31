@@ -67,3 +67,5 @@ export const url_type_for_relation_id = {
     // Lastfm
     "08db8098-c0df-4b78-82c3-c8697b4bba7f": "music_databases",
 };
+
+export type MbEntity = "recording" | "release" | "artist";;

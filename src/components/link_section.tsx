@@ -1,20 +1,21 @@
 import { IRelation } from "musicbrainz-api";
-import { LinkCategory } from "./link_category";
+import { LinkCategory } from "./link_list/category/link_category";
 import { UrlData } from "@/models/url";
 import { link } from "fs";
 import styles from "./link_card.module.css";
 import Link from "next/link";
+import { MbEntity } from "@/globals";
 
-export function LinkSection({
-    links,
-    mbid,
-}: {
+export type LinkSectionProps = {
     links: UrlData[];
     mbid: string;
-}) {
+    entity_type: MbEntity;
+};
+
+export function LinkSection(props: LinkSectionProps) {
     // If there's only MB links, display the "No link" page
-    if (!links.some((link) => link.get_hostname() != "musicbrainz.org")) {
-        return <MissingLinks entity_type="recording" mbid={mbid} />;
+    if (isMissingLinks(props.links)) {
+        return <MissingLinks entity_type="recording" mbid={props.mbid} />;
     }
 
     let music_platform_links = [];
@@ -22,7 +23,7 @@ export function LinkSection({
     let database_links = [];
     let other_links = [];
 
-    for (const link of links) {
+    for (const link of props.links) {
         switch (link.url_type) {
             case "listen_on":
                 music_platform_links.push(link);
@@ -56,11 +57,21 @@ export function LinkSection({
     );
 }
 
+function isMissingLinks(links: UrlData[]) {
+    for (const link of links) {
+        if (link.get_hostname() != "musicbrainz.org" && link.get_hostname() != "listenbrainz.org") {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 function MissingLinks({
     entity_type,
     mbid,
 }: {
-    entity_type: string;
+        entity_type: MbEntity;
     mbid: string;
 }) {
     let entity_edit = `https://musicbrainz.org/${entity_type}/${mbid}/edit`;
@@ -75,7 +86,7 @@ function MissingLinks({
                     <Link href={entity_edit}>add some</Link>
                 </p>
                 <p>
-                    Or try with <Link href={listenbrainz}>Listenbrainz</Link>
+                    Or try listening on <Link href={listenbrainz}>Listenbrainz</Link>
                 </p>
             </div>
         </>

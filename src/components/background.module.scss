@@ -1,4 +1,25 @@
+@property --myColor1 {
+    syntax: '<color>';
+    initial-value: #00ff0000;
+    inherits: false;
+
+
+}
+
+@property --myColor2 {
+    syntax: '<color>';
+    initial-value: #00ff0000;
+    inherits: false;
+}
+
 .background {
     height: 100vh;
     width: 100vw;
+
+    background: linear-gradient(111deg, var(--myColor1, rgb(223, 43, 73)) 0%, var(--myColor2, rgb(232, 117, 11)) 100%);
+
+    --myColor1: var(--accent_color_a, rgb(223, 43, 73));
+    --myColor2: var(--accent_color_b, rgb(232, 117, 11));
+
+    transition: --myColor1 0.15s linear, --myColor2 0.15s linear;
 }

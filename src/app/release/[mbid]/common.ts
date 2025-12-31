@@ -1,3 +1,5 @@
+import { LinkPageProps } from "@/components/link_page/link_page";
+import { LinkPageOGProps } from "@/components/opengraph/link_page_og";
 import { cache_duration } from "@/globals";
 import { get_image_palette } from "@/image";
 import { release_covert_art } from "@/mb_fetching";
@@ -6,18 +8,9 @@ import { IRelease } from "musicbrainz-api";
 import { notFound } from "next/navigation";
 
 export type ReleaseData = {
-    title: string;
-    disambiguation: string;
-    image: string;
-    artist_credits: String;
-
-    color_a: string;
-    color_b: string;
-
-    urls: UrlData[];
-
-    raw: IRelease;
-};
+    entity_type: "release";
+} & LinkPageOGProps &
+    LinkPageProps;
 
 export async function get_release_data(mbid: string): Promise<ReleaseData> {
     let response = await fetch(
@@ -53,20 +46,24 @@ export async function get_release_data(mbid: string): Promise<ReleaseData> {
     }
 
     let credits = "";
-    for (const credit of release_data["artist-credit"]) {
+    for (const credit of release_data["artist-credit"] || []) {
         credits += credit.name + credit.joinphrase;
     }
 
     return {
+        entity_type: "release",
+        mbid: release_data.id,
         title: release_data.title,
         disambiguation: release_data.disambiguation,
-        artist_credits: credits,
+        artist_credits_string: credits,
+        artist_credits: release_data["artist-credit"],
+
         image: image,
         color_a: color_a,
         color_b: color_b,
 
         urls: UrlData.convert_release_urls(release_data),
 
-        raw: release_data,
+        releases: []
     };
 }

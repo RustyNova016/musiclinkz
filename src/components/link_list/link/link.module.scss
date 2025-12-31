@@ -1,0 +1,93 @@
+.link_button_group {
+    width: 100%;
+    margin-bottom: 7.5px;
+}
+
+.link_button {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px black solid;
+    background-color: rgb(255, 255, 255);
+
+    color: black;
+    size: 1em;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    transform-style: preserve-3d;
+    z-index: 0;
+
+    &:hover {
+        box-shadow: 0px 0px 10px #bebebe;
+        transition: 0.15s;
+    }
+}
+
+.link_button_left {
+    border: 2px black solid;
+    border-right: 2px;
+    border-radius: 5px 0px 0px 5px;
+
+    margin-right: 1px;
+}
+
+.link_button_right {
+    width: fit-content;
+
+    border: 2px black solid;
+    border-left: 0px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.link_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+}
+
+.link_button_solo {
+    width: 100%;
+    border-radius: 5px;
+    border: 2px black solid;
+}
+
+.link_text {
+    text-align: center;
+    margin-left: 5px;
+}
+
+@property --myColor1 {
+    syntax: '<color>';
+    initial-value: #00ff0000;
+    inherits: false;
+}
+
+@property --myColor2 {
+    syntax: '<color>';
+    initial-value: #00ff0000;
+    inherits: false;
+}
+
+.shadow {
+    &:before {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        transform: translate3d(0px, 0px, -1px);
+
+        border-radius: 10px;
+
+        filter: blur(2px);
+        background: linear-gradient(111deg, var(--myColor1, rgb(223, 43, 73)) 0%, var(--myColor2, rgb(232, 117, 11)) 100%);
+    }
+
+    &:hover:before {
+        --myColor1: var(--accent_color_a, rgb(223, 43, 73));
+        --myColor2: var(--accent_color_b, rgb(232, 117, 11));
+
+        transition: --myColor1 0.15s linear, --myColor2 0.15s linear;
+    }
+}

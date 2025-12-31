@@ -54,6 +54,11 @@ export class UrlData {
                 `https://musicbrainz.org/recording/${recording.id}`,
                 "music_databases"
             ),
+            new UrlData(
+                "",
+                `https://listenbrainz.org/track/${recording.id}`,
+                "music_databases"
+            ),
             ...urls,
         ];
     }

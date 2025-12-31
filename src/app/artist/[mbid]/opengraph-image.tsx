@@ -1,6 +1,6 @@
 import { Background } from "@/components/background";
 import { ImageResponse } from "next/og";
-import { get_recording_data } from "./common";
+import { get_artist_data, get_recording_data } from "./common";
 import { PageModal } from "@/components/stateless/modal";
 import { Geist } from "next/font/google";
 import { join } from "path";
@@ -19,10 +19,10 @@ export const contentType = "image/png";
 export default async function OGImage({
     params,
 }: {
-    params: { mbid: string };
+    params: { mbid: string; };
 }) {
     const { mbid } = await params;
-    let recording_data = await get_recording_data(mbid);
+    let recording_data = await get_artist_data(mbid);
 
-    return LinkPageOG(recording_data)
+    return LinkPageOG(recording_data);
 }

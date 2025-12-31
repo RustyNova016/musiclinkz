@@ -33,7 +33,7 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
-  
+
 }
 
 .main ol {
@@ -125,41 +125,6 @@ a.secondary {
   .footer a:hover {
     text-decoration: underline;
     text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
   }
 }
 

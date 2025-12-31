@@ -1,46 +1,23 @@
-import Link from "next/link";
-import styles from "./link_card.module.css";
-import Image from "next/image";
-import { IArtistCredit } from "musicbrainz-api";
-import { artist_credits } from "@/mb_fetching";
-import { link_domains } from "@/globals";
 import { UrlData } from "@/models/url";
+import styles from "./link.module.scss";
+import Link from "next/link";
 
-export function LinkCategory({
-    data,
-    title,
-    hover,
-}: {
-    data: UrlData[];
-    title: string;
-    hover: string;
-}) {
-    if (data.length === 0) {
-        return <></>;
+export type LinkPillProps = {
+    links: UrlData[];
+};
+
+// A link in the link list
+export function LinkItem({ links }: LinkPillProps) {
+    let main_link = links.pop();
+    if (main_link === undefined) {
+        return <></>
     }
 
-    const urls = Map.groupBy(data, (item) => item.get_hostname());
-    const url_groups = Array.from(urls.values());
-
-    return (
-        <div className={`${styles.link_category}`}>
-            <h4 title={hover}>{title}</h4>
-            <>
-                {url_groups.map((link_group, key) => {
-                    return <LinkPill key={key} links={link_group}></LinkPill>;
-                })}
-            </>
-        </div>
-    );
-}
-
-function LinkPill({ links }: { links: UrlData[] }) {
-    let main_link = links.pop();
     let alt_links = links.length > 0;
 
     return (
         <>
-            <div className={`btn-group ${styles.link_button_group}`}>
+            <div className={`btn-group ${styles.link_button_group} ${styles.shadow}`}>
                 <MainLink link={main_link} has_alts={alt_links} />
                 {alt_links ? (
                     <>
@@ -72,7 +49,7 @@ function LinkPill({ links }: { links: UrlData[] }) {
     );
 }
 
-function MainLink({ link, has_alts }: { link: UrlData; has_alts: boolean }) {
+function MainLink({ link, has_alts }: { link: UrlData; has_alts: boolean; }) {
     let button_class = has_alts
         ? styles.link_button_left
         : styles.link_button_solo;
@@ -93,7 +70,7 @@ function MainLink({ link, has_alts }: { link: UrlData; has_alts: boolean }) {
     );
 }
 
-function AltLink({ link, index }: { link: UrlData; index: number }) {
+function AltLink({ link, index }: { link: UrlData; index: number; }) {
     return (
         <li>
             <Link className="dropdown-item" href={link.ressource}>
