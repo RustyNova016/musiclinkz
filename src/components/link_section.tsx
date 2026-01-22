@@ -40,7 +40,7 @@ export function LinkSection(props: LinkSectionProps) {
     }
 
     return (
-        <div>
+        <div className={`${styles.scroll_shadows}`}>
             <LinkCategory
                 title="Listen on..."
                 hover=""
