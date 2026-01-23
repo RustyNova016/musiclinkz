@@ -34,7 +34,7 @@ export function CardHeader(data: HeaderProps) {
             )}
             {data.artist_credits.length !== 0 ? (
                 <p className={styles.disambiguation}>
-                    by <ArtistCredits credits={data.artist_credits} color_a={data.color_a} color_b={data.color_b} />
+                    <ArtistCredits credits={data.artist_credits} color_a={data.color_a} color_b={data.color_b} add_by_prefix />
                 </p>
             ) : (
                 <></>
@@ -44,12 +44,14 @@ export function CardHeader(data: HeaderProps) {
 }
 
 export type ArtistCreditsProps = {
+    add_by_prefix: boolean,
     credits: IArtistCredit[];
 } & AccentColors;
 
 function ArtistCredits(props: ArtistCreditsProps) {
     return (
         <>
+            {props.add_by_prefix ? <>by</> : <></>}
             {props.credits.map((credit, index) => (
                 <ArtistCredit credit={credit} color_a={props.color_a} color_b={props.color_b} key={index} />
             ))}
@@ -64,7 +66,7 @@ export type ArtistCreditProps = {
 function ArtistCredit(props: ArtistCreditProps) {
     return (
         <>
-            <LinkPill href={`/artist/${props.credit.artist.id}`} color_a={props.color_a} color_b={props.color_b}>
+            <LinkPill href={`/artist/${props.credit.artist.id}`}>
                 {props.credit.name}
             </LinkPill>
             {props.credit.joinphrase}

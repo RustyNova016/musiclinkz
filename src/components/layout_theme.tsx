@@ -3,16 +3,21 @@
 import {
     createContext,
     CSSProperties,
+    Dispatch,
     PropsWithChildren,
-    use,
-    useContext,
+    SetStateAction,
     useState,
 } from "react";
-const ColorThief = require("colorthief");
+
 
 export type Color = [Number, Number, Number];
 
-export const LayoutContext = createContext(undefined);
+type LayoutContextType = undefined | Dispatch<SetStateAction<{
+    primary_color: number[];
+    secondary_color: number[];
+}>>;
+
+export const LayoutContext = createContext<LayoutContextType>(undefined);
 
 export function LayoutTheme(props: PropsWithChildren) {
     const [colors, setColors] = useState({
@@ -29,19 +34,4 @@ export function LayoutTheme(props: PropsWithChildren) {
             <LayoutContext value={setColors}>{props.children}</LayoutContext>
         </div>
     );
-}
-
-export function MainColorSetter({ colors }: { colors }) {
-    const setColors = useContext(LayoutContext);
-    setColors(colors);
-
-    return <></>;
-}
-
-export async function set_background_colors(img: string, setter) {
-    let palletes = await ColorThief.getPalette(img, 2);
-    setter({
-        primary_color: palletes[0],
-        secondary_color: palletes[1],
-    });
 }

@@ -1,23 +1,9 @@
 export const cache_duration = 4 * 3600;
 
-export const link_domains = {
-    "open.spotify.com": "Spotify",
-    "www.deezer.com": "Deezer",
-    "www.beatport.com": "Beatport",
-    "tidal.com": "Tidal",
-    "www.youtube.com": "Youtube",
-    "musicbrainz.org": "Musicbrainz",
-    "music.apple.com": "Apple Music",
-    "www.amazon.com": "Amazon",
-    "play.google.com": "Google Play",
-    "itunes.apple.com": "Itunes",
-    "www.discogs.com": "Discogs",
-    "www.last.fm": "Last.fm",
-    "listenbrainz.org": "Listenbrainz",
-    "twitter.com": "Twitter",
-    "www.facebook.com": "Facebook",
-    "www.instagram.com": "Instagram",
-};
+export const link_domains: Map<string, string> = new Map();
+link_domains.set("open.spotify.com", "Spotify");
+link_domains.set("itunes.apple.com", "Itunes");
+link_domains.set("music.apple.com", "Apple Music");
 
 export const url_type_for_relation_id = {
     // === Recordings ===
@@ -68,4 +54,4 @@ export const url_type_for_relation_id = {
     "08db8098-c0df-4b78-82c3-c8697b4bba7f": "music_databases",
 };
 
-export type MbEntity = "recording" | "release" | "artist";;
+export type MbEntity = "recording" | "release" | "artist";
