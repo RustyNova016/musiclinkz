@@ -2,7 +2,7 @@ import { cache_duration } from "@/globals";
 import { get_artist_data } from "./common";
 import { LinkPage } from "@/components/link_page/link_page";
 
-export const revalidate = cache_duration;
+export const revalidate = 14400;
 
 export const metadata = {
     title: "",

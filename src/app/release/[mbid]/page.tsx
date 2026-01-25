@@ -2,7 +2,7 @@ import { LinkPage } from "@/components/link_page/link_page";
 import { cache_duration } from "@/globals";
 import { get_release_data } from "./common";
 
-export const revalidate = cache_duration;
+export const revalidate = 14400;
 
 export const metadata = {
     title: "",
