@@ -1,10 +1,4 @@
-import { Background } from "@/components/background";
-import { ImageResponse } from "next/og";
 import { get_recording_data } from "./common";
-import { PageModal } from "@/components/stateless/modal";
-import { Geist } from "next/font/google";
-import { join } from "path";
-import { readFile } from "node:fs/promises";
 import { LinkPageOG } from "@/components/opengraph/link_page_og";
 
 // Image metadata

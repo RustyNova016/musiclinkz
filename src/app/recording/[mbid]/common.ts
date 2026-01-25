@@ -14,7 +14,7 @@ export type RecordingData = {
 
 export async function get_recording_data(mbid: string): Promise<RecordingData> {
     let recording_data: IRecording = await fetch_mb(
-        `https://musicbrainz.org/ws/2/recording/${mbid}?inc=url-rels+releases+artist-credits&fmt=json`
+        `https://musicbrainz.org/ws/2/recording/${mbid}?inc=url-rels+releases+artist-credits&fmt=json`,
     );
 
     if (recording_data.id === undefined) {
@@ -49,13 +49,13 @@ export async function get_recording_data(mbid: string): Promise<RecordingData> {
         title: recording_data.title,
         disambiguation: recording_data.disambiguation,
         artist_credits_string: credits,
-        artist_credits: recording_data["artist-credit"],
+        artist_credits: recording_data["artist-credit"] || [],
         image: image,
         color_a: color_a,
         color_b: color_b,
 
         urls: UrlData.convert_recording_urls(recording_data),
 
-        releases: recording_data.releases || []
+        releases: recording_data.releases || [],
     };
 }

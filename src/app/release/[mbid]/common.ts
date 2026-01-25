@@ -56,7 +56,7 @@ export async function get_release_data(mbid: string): Promise<ReleaseData> {
         title: release_data.title,
         disambiguation: release_data.disambiguation,
         artist_credits_string: credits,
-        artist_credits: release_data["artist-credit"],
+        artist_credits: release_data["artist-credit"] || [],
 
         image: image,
         color_a: color_a,

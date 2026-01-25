@@ -20,7 +20,7 @@ import { fetch_mb } from "@/utils/fetching";
 import { LinkPage } from "@/components/link_page/link_page";
 import { get_release_data } from "@/app/release/[mbid]/common";
 
-export const revalidate = cache_duration;
+export const revalidate = 14400;
 
 export const metadata = {
     title: "",
