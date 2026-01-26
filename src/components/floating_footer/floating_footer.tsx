@@ -1,6 +1,7 @@
 import { MbEntity } from "@/globals";
 import { LinkPill } from "../stateless/link_pill";
 import styles from "./floating_footer.module.scss";
+import Link from "next/link";
 
 export type FloatingFooterProps = {
     entity_type: MbEntity;
@@ -10,8 +11,9 @@ export type FloatingFooterProps = {
 export function FloatingFooter(props: FloatingFooterProps) {
     return <>
         <div className={`${styles.footer}`}>
-            <a className={`${styles.link}`} href="https://github.com/RustyNova016/musiclinkz">Github</a>
-            <a className={`${styles.link}`} href={`https://musicbrainz.org/recording/${props.mbid}/edit`}>Edit Page</a>
+            <Link className={`${styles.link}`} href={"/privacy_policy"}>Privacy Policy</Link>
+            <Link className={`${styles.link}`} href={"https://github.com/RustyNova016/musiclinkz"}>Github</Link>
+            <Link className={`${styles.link}`} href={`https://musicbrainz.org/recording/${props.mbid}/edit`}>Edit Page</Link>
         </div>
     </>;
 }

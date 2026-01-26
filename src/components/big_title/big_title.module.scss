@@ -1,0 +1,14 @@
+.title_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 5vh;
+}
+
+.title {
+    font-size: calc(2.55rem + 5.5vw);
+    color: aliceblue;
+
+    text-align: center;
+}

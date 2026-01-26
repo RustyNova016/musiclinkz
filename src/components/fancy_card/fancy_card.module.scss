@@ -1,0 +1,20 @@
+.fancy_card {
+    height: fit-content;
+    padding: 15px;
+    margin: 15px;
+
+    // padding: 30px;
+    background-color: #00000080;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 20px black;
+    border: rgb(109, 109, 112) solid 0.25px;
+
+    color: white;
+    /* overflow: scroll; */
+
+    @media (max-width: 710px) {
+        max-width: 386px;
+        flex-flow: column;
+    }
+}

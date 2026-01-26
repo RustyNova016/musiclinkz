@@ -1,24 +1,26 @@
 import { CSSProperties, PropsWithChildren } from "react";
 
 import styles from "./modal.module.scss";
+import { classnames, PropsWithClassname, PropsWithStyle } from "@/utils/css_class";
 
-export function PageModal({
-    children,
-    style,
-}: PropsWithChildren & { style?: CSSProperties }) {
+export type PageModalProps = PropsWithChildren & PropsWithStyle & PropsWithClassname;
+
+export function PageModal(props: PageModalProps) {
     return (
-        <div className={`${styles.modal_container}`}>
-            <div style={style} className={`${styles.page_modal}`}>
-                {children}
+        <div className={classnames(styles.modal_container, props.className)}>
+            <div style={props.style} className={`${styles.page_modal}`}>
+                {props.children}
             </div>
         </div>
     );
 }
 
+
+
 export function ModalChild({
     children,
     style,
-}: PropsWithChildren & { style?: CSSProperties }) {
+}: PropsWithChildren & { style?: CSSProperties; }) {
     return (
         <div style={style} className={`${styles.card_item}`}>
             {children}

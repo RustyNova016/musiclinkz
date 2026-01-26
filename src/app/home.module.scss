@@ -2,6 +2,15 @@
     height: 100vh;
     width: 100vw;
     overflow: scroll;
+
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        text-align: center;
+    }
 }
 
 .title_container {
@@ -17,18 +26,22 @@
     color: aliceblue;
 }
 
-.section {
-    margin-top: 30px;
-}
+
 
 .description {
-    background-color: rgb(41, 41, 41);
     color: white;
-    // width: 100vw;
 
-    border-radius: 30px;
+    margin: 20px 20px;
+    padding: 25px 25px 15px 25px !important;
+    font-size: 18px;
+    width: 90vw;
 
-    padding: 20px 5vw;
-    margin: 0px 5vw;
-    font-size: large;
+    h1 {
+        font-size: 2.25rem;
+        text-decoration: underline;
+    }
+
+    p {
+        padding: 0px 20px;
+    }
 }
