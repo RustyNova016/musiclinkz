@@ -1,0 +1,20 @@
+.layout {
+    font-family: "Fira Sans", sans-serif;
+
+    --gray-rgb: 0, 0, 0;
+    --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
+    --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+
+    --button-primary-hover: #383838;
+    --button-secondary-hover: #f2f2f2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100svh;
+    overflow: scroll;
+
+    background: #000000;
+    background: linear-gradient(111deg, rgb(223, 43, 73) 0%, rgb(232, 117, 11) 100%);
+}

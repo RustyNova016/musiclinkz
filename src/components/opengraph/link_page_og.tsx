@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
 import { join } from "path";
 import { readFile } from "node:fs/promises";
+import { FancyPill } from "../pills/fancy_pill";
+import { PropsWithChildren } from "react";
 
 // Image metadata
 export const size = {
@@ -47,13 +49,21 @@ export async function LinkPageOG(props: LinkPageOGProps) {
             >
                 <div
                     style={{
+                        padding: "15px",
+                        margin: "15px",
+
                         backgroundColor: "#00000080",
+                        borderRadius: "30px",
+
+                        boxShadow: "0px 0px 20px black",
+                        border: "rgb(109, 109, 112) solid 1px",
+
                         display: "flex",
                         width: "85%",
                         height: "80%",
                         alignItems: "center",
                         justifyContent: "space-around",
-                        borderRadius: "30px",
+
                     }}
                 >
                     <div
@@ -67,6 +77,7 @@ export async function LinkPageOG(props: LinkPageOGProps) {
                     >
                         <img
                             style={{
+                                boxShadow: `0px 0px 20px ${props.color_a}`,
                                 width: "200px",
                                 height: "200px",
                             }}
@@ -102,17 +113,24 @@ export async function LinkPageOG(props: LinkPageOGProps) {
                             {props.title}
                         </div>
 
-                        <div
-                            style={{
-                                display: "flex",
-                                color: "rgb(177, 177, 177)",
-                                fontSize: "0.15em",
-                                margin: "5px",
-                                textAlign: "center",
-                            }}
-                        >
-                            by {props.artist_credits_string}
-                        </div>
+                        {props.artist_credits_string !== undefined && props.artist_credits_string !== "" ?
+                            <p
+                                style={{
+                                    color: "rgb(177, 177, 177)",
+                                    fontSize: "0.15em",
+                                    margin: "5px",
+                                    textAlign: "end",
+                                    padding: ".25em"
+                                }}
+                            >
+                                <span style={{
+                                    borderRadius: "50rem",
+                                    padding: ".25em .25em"
+                                }}>by</span><ArtistCredit>{props.artist_credits_string}</ArtistCredit>
+                            </p>
+                            : <></>
+                        }
+
                     </div>
                 </div>
             </div>
@@ -130,4 +148,18 @@ export async function LinkPageOG(props: LinkPageOGProps) {
             ],
         }
     );
+}
+
+
+function ArtistCredit(props: PropsWithChildren) {
+    return <>
+        <span style={{
+            color: " rgb(230, 230, 230)",
+            backgroundColor: "rgb(53, 53, 53)",
+            borderRadius: "50rem",
+            padding: ".25em .55em"
+        }}>
+            {props.children}
+        </span>
+    </>;
 }

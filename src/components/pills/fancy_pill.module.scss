@@ -1,0 +1,63 @@
+.fancy_pill {
+    display: inline-block;
+    position: relative;
+    padding: 0.25em 0.55em;
+    font-size: 0.85em;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+
+    background-color: rgb(53, 53, 53);
+    border-color: rgb(53, 53, 53);
+    border-radius: 50rem;
+    border-width: 0px;
+    border-style: solid;
+    color: rgb(230, 230, 230);
+    text-decoration: none;
+
+    transform-style: preserve-3d;
+    z-index: 0;
+
+    transition: background-color 0.15s linear;
+
+    // &:hover {
+    //     //background: linear-gradient(111deg, rgb(223, 43, 73) 0%, rgb(232, 117, 11) 100%);
+    //     background-color: #f000;
+    //     //background-color: rgb(53, 53, 53);
+    // }
+}
+
+@property --myColor1 {
+    syntax: '<color>';
+    initial-value: #00ff0000;
+    inherits: false;
+}
+
+@property --myColor2 {
+    syntax: '<color>';
+    initial-value: #00ff0000;
+    inherits: false;
+}
+
+.shadow {
+    &:before {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        transform: translate3d(0px, 0px, -1px);
+
+        border-radius: 50rem;
+
+        filter: blur(2px);
+        background: linear-gradient(111deg, var(--myColor1, rgb(223, 43, 73)) 0%, var(--myColor2, rgb(232, 117, 11)) 100%);
+    }
+
+    &:hover:before {
+        --myColor1: var(--accent_color_a, rgb(223, 43, 73));
+        --myColor2: var(--accent_color_b, rgb(232, 117, 11));
+
+        transition: --myColor1 0.15s linear, --myColor2 0.15s linear;
+    }
+}

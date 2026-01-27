@@ -1,11 +1,11 @@
 import { LinkPageProps } from "@/components/link_page/link_page";
 import { LinkPageOGProps } from "@/components/opengraph/link_page_og";
 import { get_image_palette } from "@/image";
-import { artist_image, recording_cover_art } from "@/models/recording";
-import { UrlData } from "@/models/url";
 import { fetch_mb } from "@/utils/fetching";
-import { IArtist, IRecording } from "musicbrainz-api";
+import { IArtist } from "musicbrainz-api";
 import { notFound } from "next/navigation";
+import { artist_image } from "./recording";
+import { UrlData } from "./url";
 
 export type ArtistData = {
     entity_type: "artist";

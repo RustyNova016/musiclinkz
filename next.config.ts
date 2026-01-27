@@ -14,17 +14,30 @@ const nextConfig: NextConfig = {
     output: "standalone",
 
     async rewrites() {
+        let entities = ["track", "recording", "artist", "release"];
+        let redirects = [];
+
+        for (const ent of entities) {
+            redirects.push({
+                source: `/${ent}/:mbid`,
+                destination: `/links/?entity_type=${ent}&id=:mbid`,
+            });
+        }
+
         return {
             beforeFiles: [
                 // These rewrites are checked after headers/redirects
                 // and before all files including _next/public files which
                 // allows overriding page files
-                {
-                    source: "/track/:mbid",
-                    destination: "/recording/:mbid",
-                },
+                ...redirects
             ],
         };
+    },
+
+    logging: {
+        fetches: {
+            fullUrl: false,
+        },
     },
 };
 
