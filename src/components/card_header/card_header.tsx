@@ -51,7 +51,7 @@ export type ArtistCreditsProps = {
 function ArtistCredits(props: ArtistCreditsProps) {
     return (
         <>
-            {props.add_by_prefix ? <>by</> : <></>}
+            {props.add_by_prefix ? "by " : <></>}
             {props.credits.map((credit, index) => (
                 <ArtistCredit credit={credit} color_a={props.color_a} color_b={props.color_b} key={index} />
             ))}
