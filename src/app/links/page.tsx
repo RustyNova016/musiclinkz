@@ -20,8 +20,9 @@ export async function generateMetadata(props: PageProps<"/links">): Promise<Meta
         description: `See the links of ${data.title} by ${data.artist_credits_string}`,
         openGraph: {
             images: {
-                url: `https://8qtkpjkm-3000.uks1.devtunnels.ms/links/og?entity_type=${data.entity_type}&id=${data.mbid}`
+                url: `/links/og?entity_type=${data.entity_type}&id=${data.mbid}`
             }
-        }
+        },
+        metadataBase: new URL(process.env.DOMAIN || "http://localhost:3000"),
     };
 }

@@ -6,7 +6,8 @@ import { classnames } from "@/utils/css_class";
 
 export const metadata = {
     title: "MusicLinkz",
-    describe: "A simple link aggregator to easily share your music"
+    describe: "A simple link aggregator to easily share your music",
+    metadataBase: new URL(process.env.domain || "localhost:3000"),
 };
 
 export default function Home() {
