@@ -22,6 +22,7 @@ export async function generateMetadata(props: PageProps<"/links">): Promise<Meta
             images: {
                 url: `/links/og?entity_type=${data.entity_type}&id=${data.mbid}`
             }
-        }
+        },
+        metadataBase: new URL(process.env.DOMAIN || "http://localhost:3000"),
     };
 }
