@@ -1,10 +1,8 @@
-import { IRelation } from "musicbrainz-api";
 import { LinkCategory } from "./link_list/category/link_category";
 import { UrlData } from "@/models/url";
-import { link } from "fs";
 import styles from "./link_card.module.css";
-import Link from "next/link";
 import { MbEntity } from "@/globals";
+import { MissingLinks } from "./link_card/links/missing_links";
 
 export type LinkSectionProps = {
     links: UrlData[];
@@ -67,28 +65,3 @@ function isMissingLinks(links: UrlData[]) {
     return true;
 }
 
-function MissingLinks({
-    entity_type,
-    mbid,
-}: {
-        entity_type: MbEntity;
-    mbid: string;
-}) {
-    let entity_edit = `https://musicbrainz.org/${entity_type}/${mbid}/edit`;
-    let listenbrainz = `https://listenbrainz.org/${entity_type}/${mbid}`;
-
-    return (
-        <>
-            <div className={`${styles.card_item}`}>
-                <p style={{ fontSize: "500%" }}>⛓️‍💥</p>
-                <p>
-                    No links have been found... But you can{" "}
-                    <Link href={entity_edit}>add some</Link>
-                </p>
-                <p>
-                    Or try listening on <Link href={listenbrainz}>Listenbrainz</Link>
-                </p>
-            </div>
-        </>
-    );
-}

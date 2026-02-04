@@ -1,5 +1,4 @@
-import { LinkPageProps } from "@/components/link_page/link_page";
-import { LinkPageOGProps } from "@/components/opengraph/link_page_og";
+import { EntityData } from "@/app/links/get_data";
 import { cache_duration } from "@/globals";
 import { get_image_palette } from "@/image";
 import { release_covert_art } from "@/mb_fetching";
@@ -9,8 +8,7 @@ import { notFound } from "next/navigation";
 
 export type ReleaseData = {
     entity_type: "release";
-} & LinkPageOGProps &
-    LinkPageProps;
+} & EntityData
 
 export async function get_release_data(mbid: string): Promise<ReleaseData> {
     let response = await fetch(

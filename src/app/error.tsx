@@ -1,5 +1,5 @@
 "use client";
-import { PageModal } from "@/components/stateless/modal";
+import { CenteredCard } from "@/components/stateless/modal";
 
 export default function Error({
     error,
@@ -9,10 +9,10 @@ export default function Error({
     reset: () => void;
 }) {
     return (
-        <PageModal style={{ flexDirection: "column" }}>
-            <p style={{ fontSize: "500%" }}>⚠️ Oops...</p>
-            <p>Something went wrong! Try refreshing the page?</p>
+        <CenteredCard style={{ flexDirection: "column" }}>
+            <p style={{ fontSize: "400%" }}>⚠️Oops...</p>
+            <p style={{ margin: "10px" }}>Something went wrong! Try refreshing the page?</p>
             <p><code>{error.message}</code></p>
-        </PageModal>
+        </CenteredCard>
     );
 }
