@@ -1,0 +1,18 @@
+.card_inner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row wrap;
+
+    height: fit-content;
+    max-height: 90%;
+
+    min-width: 300px;
+    width: 90%;
+    max-width: 800px;
+
+    @media (max-width: 710px) {
+        max-width: 386px;
+        flex-flow: column;
+    }
+}

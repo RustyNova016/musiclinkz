@@ -1,5 +1,5 @@
 import { BigTitle } from "@/components/big_title/big_title";
-import { PageModal } from "@/components/stateless/modal";
+import { CenteredCard } from "@/components/stateless/modal";
 
 import styles from "./page.module.scss";
 
@@ -13,11 +13,11 @@ export default function Page() {
         <div className={`${styles.page}`}>
             <BigTitle>All your data<br />are belong to us!</BigTitle>
 
-            <PageModal>
+            <CenteredCard>
                 <p className={`${styles.modal}`}>
                     Just kidding! We don't collect any data nor cookies!
                 </p>
-            </PageModal>
+            </CenteredCard>
         </div>
 
     </>;

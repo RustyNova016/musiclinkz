@@ -1,16 +1,14 @@
-import { LinkPageProps } from "@/components/link_page/link_page";
-import { LinkPageOGProps } from "@/components/opengraph/link_page_og";
 import { get_image_palette } from "@/image";
 import { fetch_mb } from "@/utils/fetching";
 import { IArtist } from "musicbrainz-api";
 import { notFound } from "next/navigation";
 import { artist_image } from "./recording";
 import { UrlData } from "./url";
+import { EntityData } from "@/app/links/get_data";
 
 export type ArtistData = {
     entity_type: "artist";
-} & LinkPageOGProps &
-    LinkPageProps;
+} & EntityData;
 
 export async function get_artist_data(mbid: string): Promise<ArtistData> {
     let artist_data: IArtist = await fetch_mb(

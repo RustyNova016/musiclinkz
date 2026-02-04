@@ -1,0 +1,24 @@
+.card_item {
+    margin: 20px;
+    padding: 10px;
+    width: 44%;
+    max-height: 83vh;
+
+    text-align: center;
+    overflow: scroll;
+
+    flex-grow: 1;
+
+    /* Center the content */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+    @media (max-width: 710px) {
+        height: min-content;
+        max-height: min-content;
+        width: 100%;
+        padding: 0px;
+        margin: 10px 0px 0px 0px;
+    }
+}

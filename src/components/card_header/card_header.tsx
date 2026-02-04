@@ -3,7 +3,7 @@ import styles from "./card_header.module.scss";
 import Image from "next/image";
 import { LinkPill } from "../stateless/link_pill";
 import { FoundOnRelease } from "./found_on_release/found_on_release";
-import { CoverartImage } from "./coverart_image/coverart_image";
+import { CoverartImage } from "../link_card/cover_art/coverart_image/coverart_image";
 import { AccentColors } from "@/models/page_style";
 
 export type HeaderProps = {
