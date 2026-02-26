@@ -5,9 +5,15 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             new URL("https://coverartarchive.org/**"),
             new URL("http://coverartarchive.org/**"),
-            new URL("http://www.google.com/s2/**"),
+            new URL("http://www.google.com/**"),
             new URL("https://listenbrainz.org/**"),
             new URL("https://web.archive.org/**"),
+            new URL("https://www.google.com/**"),
+            {
+                protocol: "https",
+                hostname: "www.google.com",
+                pathname: "/s2/favicons",
+            }
         ],
     },
 
