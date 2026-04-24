@@ -30,7 +30,7 @@
     "@types/react-dom": "19.2.3",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
-    "sass": "^1.89.2",
+    "sass": "^1.99.0",
     "typescript": "^5"
   },
   "resolutions": {
