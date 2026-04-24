@@ -75,6 +75,7 @@ export async function LinkPageOG(props: LinkPageOGProps) {
                             width: "44%",
                         }}
                     >
+                        {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text */}
                         <img
                             style={{
                                 boxShadow: `0px 0px 20px ${props.color_a}`,

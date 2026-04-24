@@ -1,6 +1,7 @@
 import { UrlData } from "@/models/url";
 import styles from "./link.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 export type LinkPillProps = {
     links: UrlData[];
@@ -10,7 +11,7 @@ export type LinkPillProps = {
 export function LinkItem({ links }: LinkPillProps) {
     let main_link = links.pop();
     if (main_link === undefined) {
-        return <></>
+        return <></>;
     }
 
     let alt_links = links.length > 0;
@@ -61,9 +62,12 @@ function MainLink({ link, has_alts }: { link: UrlData; has_alts: boolean; }) {
         >
             {" "}
             <div className={styles.link_icon}>
-                <img
-                    src={`http://www.google.com/s2/favicons?domain=${link.get_hostname()}`}
-                ></img>
+                <Image
+                    src={`https://www.google.com/s2/favicons?domain=${link.get_hostname()}`}
+                    alt="Domain favicon"
+                    width={16}
+                    height={16}
+                />
             </div>
             <div className={styles.link_text}>{link.get_name()}</div>
         </Link>

@@ -15,7 +15,7 @@ export default function Page() {
 
             <CenteredCard>
                 <p className={`${styles.modal}`}>
-                    Just kidding! We don't collect any data nor cookies!
+                    Just kidding! We don&apos;t collect any data nor cookies!
                 </p>
             </CenteredCard>
         </div>

@@ -16,6 +16,8 @@
         buildInputs = [
           pkgs.nodejs_24
           pkgs.nodePackages.pnpm
+          pkgs.nodePackages.eslint
+
         ];
 
         NODE_ENV = "development";

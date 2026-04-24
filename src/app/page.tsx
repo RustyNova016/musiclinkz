@@ -42,7 +42,7 @@ export default function Home() {
                 <br />
                 <h1 className={`${styles.section}`}>Private</h1>
                 <p>
-                    No data is collected. No traffic, no cookies. Pure HTML beamed straight to your browser. But for legal reasons, here's the{" "}
+                    No data is collected. No traffic, no cookies. Pure HTML beamed straight to your browser. But for legal reasons, here{"'"}s the{" "}
                     <LinkPill href={"/privacy_policy"}>
                         privacy policy
                     </LinkPill>{" "}
