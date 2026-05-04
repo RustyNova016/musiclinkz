@@ -13,6 +13,7 @@ export type HeaderProps = {
 
     releases: IRelease[];
     image: string | null;
+    svg: string | null;
 } & AccentColors;
 
 export function CardHeader(data: HeaderProps) {
@@ -20,8 +21,8 @@ export function CardHeader(data: HeaderProps) {
         <div className={`${styles.card_header}`}>
             <FoundOnRelease releases={data.releases} />
 
-            {data.image !== null ? (
-                <CoverartImage src={data.image} />
+            {data.image !== null || data.svg !== null ? (
+                <CoverartImage src={data.image} svg={data.svg} />
             ) : (
                 <></>
             )}

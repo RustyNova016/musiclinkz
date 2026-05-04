@@ -2,13 +2,14 @@ import Image from "next/image";
 import styles from "./coverart_image.module.scss";
 
 export type CoverartImageProps = {
-  src: string;
+  src: string | null;
+  svg: string | null;
 };
 
 export function CoverartImage(props: CoverartImageProps) {
   return <>
     <div className={`${styles.coverart} ${styles.shadow}`}>
-      <Image
+      {props.src !== null ? <Image
         src={props.src}
 
         alt="Cover Art of the entity"
@@ -16,7 +17,10 @@ export function CoverartImage(props: CoverartImageProps) {
         width={250}
         placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 700))}`}
         className={`${styles.image}`}
-      />
+      /> : <></>}
+
+      {props.svg !== null ? <div className={`${styles.image}`} dangerouslySetInnerHTML={{ __html: props.svg || "" }}></div> : <></>}
+
     </div>
   </>;
 }

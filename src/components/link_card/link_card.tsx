@@ -15,6 +15,7 @@ export type LinkCardProps = {
     title: string;
     disambiguation: string;
     image: string | null;
+    svg: string | null;
     urls: UrlData[];
 
     artist_credits: IArtistCredit[];
@@ -35,6 +36,7 @@ export function LinkCard(props: LinkCardProps) {
                         title={props.title}
                         disambiguation={props.disambiguation}
                         image={props.image}
+                        svg={props.svg}
                         artist_credits={props.artist_credits}
                         releases={props.releases}
                         color_a={props.color_a}
