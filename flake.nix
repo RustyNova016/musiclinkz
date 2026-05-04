@@ -15,16 +15,14 @@
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.nodejs_24
-          pkgs.nodePackages.pnpm
-          pkgs.nodePackages.eslint
-
+          pkgs.pnpm
+          pkgs.eslint
         ];
 
         NODE_ENV = "development";
 
         shellHook = ''
           export PATH="${pkgs.nodejs_24}/bin:$PATH"
-          export PATH="${pkgs.nodePackages.yarn}/bin:$PATH"
         '';
       };
     };

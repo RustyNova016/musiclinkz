@@ -11,6 +11,7 @@ export type EntityData = {
     title: string;
     disambiguation: string;
     image: string | null;
+    svg: string | null;
     urls: UrlData[];
 
     artist_credits: IArtistCredit[];

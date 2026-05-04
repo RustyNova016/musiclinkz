@@ -20,6 +20,7 @@ export async function get_artist_data(mbid: string): Promise<ArtistData> {
     }
 
     let image = await artist_image(artist_data);
+    let svg = null;
     let color_a = "";
     let color_b = "";
 
@@ -28,6 +29,11 @@ export async function get_artist_data(mbid: string): Promise<ArtistData> {
         color_a = pallette[0];
         color_b = pallette[1];
     } else {
+        svg = await (await fetch(`https://api.listenbrainz.org/1/art/artist-grid/${artist_data.id}/3/0/250?caption=false`)).text();
+        svg = svg.replaceAll(`width="250"`, ` `);
+        svg = svg.replaceAll(`height="250"`, ` `);
+        svg = svg.replaceAll(`font-size="12"`, `font-size="10"`);
+
         color_a = "rgb(223, 43, 73)";
         color_b = "rgb(232, 117, 11)";
     }
@@ -41,6 +47,7 @@ export async function get_artist_data(mbid: string): Promise<ArtistData> {
         artist_credits_string: "",
         artist_credits: [],
         image: image,
+        svg: svg,
         color_a: color_a,
         color_b: color_b,
 
