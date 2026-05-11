@@ -35,16 +35,16 @@ importers:
         version: 5.0.1
       next:
         specifier: 16.2.4
-        version: 16.2.4(@babel/core@7.29.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0)
+        version: 16.2.4(@babel/core@7.29.0)(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(sass@1.99.0)
       node-vibrant:
         specifier: ^4.0.4
         version: 4.0.4
       react:
-        specifier: 19.2.5
-        version: 19.2.5
+        specifier: 19.2.6
+        version: 19.2.6
       react-dom:
         specifier: 19.2.5
-        version: 19.2.5(react@19.2.5)
+        version: 19.2.5(react@19.2.6)
       tinycolor2:
         specifier: ^1.6.0
         version: 1.6.0
@@ -1989,8 +1989,8 @@ packages:
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
-  react@19.2.5:
-    resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
+  react@19.2.6:
+    resolution: {integrity: sha512-sfWGGfavi0xr8Pg0sVsyHMAOziVYKgPLNrS7ig+ivMNb3wbCBw3KxtflsGBAwD3gYQlE/AEZsTLgToRrSCjb0Q==}
     engines: {node: '>=0.10.0'}
 
   readable-stream@4.7.0:
@@ -2316,7 +2316,7 @@ packages:
 
   uuid@3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
-    deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   verror@1.10.0:
@@ -4251,16 +4251,16 @@ snapshots:
       iota-array: 1.0.0
       is-buffer: 1.1.6
 
-  next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(sass@1.99.0):
+  next@16.2.4(@babel/core@7.29.0)(react-dom@19.2.5(react@19.2.6))(react@19.2.6)(sass@1.99.0):
     dependencies:
       '@next/env': 16.2.4
       '@swc/helpers': 0.5.15
       baseline-browser-mapping: 2.10.21
       caniuse-lite: 1.0.30001790
       postcss: 8.4.31
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
-      styled-jsx: 5.1.6(@babel/core@7.29.0)(react@19.2.5)
+      react: 19.2.6
+      react-dom: 19.2.5(react@19.2.6)
+      styled-jsx: 5.1.6(@babel/core@7.29.0)(react@19.2.6)
     optionalDependencies:
       '@next/swc-darwin-arm64': 16.2.4
       '@next/swc-darwin-x64': 16.2.4
@@ -4440,14 +4440,14 @@ snapshots:
     dependencies:
       '@biomejs/biome': 1.9.4
 
-  react-dom@19.2.5(react@19.2.5):
+  react-dom@19.2.5(react@19.2.6):
     dependencies:
-      react: 19.2.5
+      react: 19.2.6
       scheduler: 0.27.0
 
   react-is@16.13.1: {}
 
-  react@19.2.5: {}
+  react@19.2.6: {}
 
   readable-stream@4.7.0:
     dependencies:
@@ -4737,10 +4737,10 @@ snapshots:
       '@tokenizer/token': 0.3.0
       peek-readable: 4.1.0
 
-  styled-jsx@5.1.6(@babel/core@7.29.0)(react@19.2.5):
+  styled-jsx@5.1.6(@babel/core@7.29.0)(react@19.2.6):
     dependencies:
       client-only: 0.0.1
-      react: 19.2.5
+      react: 19.2.6
     optionalDependencies:
       '@babel/core': 7.29.0
 
